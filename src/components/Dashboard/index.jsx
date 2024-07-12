@@ -1,9 +1,26 @@
 import styles from "./styles.module.css";
-import { NoteCreate } from "../NoteCreate";
-import { NoteCard } from "../NoteCard";
-
+import NoteCard from '../NoteCard/index';
+import NoteCreate from '../NoteCreate/index';
+import { useState } from 'react';
 
 export function Dashboard() {
+    const [notes, setNotes] = useState([
+        { id: 1, title: 'Nota Ejemplo', body: 'Cuerpo de nota de ejemplo', color: 'white' },
+        { id: 2, title: 'Nota Ejemplo', body: 'Cuerpo de nota de ejemplo', color: 'red' },
+        // Puedes agregar más notas aquí
+      ]);
+    
+      const addNote = (note) => {
+        setNotes([...notes, { ...note, id: Date.now() }]);
+      };
+    
+      const deleteNote = (id) => {
+        setNotes(notes.filter(note => note.id !== id));
+      };
+    
+      const changeNoteColor = (id, color) => {
+        setNotes(notes.map(note => (note.id === id ? { ...note, color } : note)));
+      };
     
     return (
         <div className={styles.container}>
@@ -25,10 +42,16 @@ export function Dashboard() {
                     </a>
                 </div>
                 <div className={styles.containerNotes}>
-                    <NoteCreate/>
+                    <NoteCreate  addNote={addNote}/>
                     <div className="notes">
-                        <p>No notes</p>
-                        <NoteCard/>
+                    {notes.map(note => (
+                        <NoteCard
+                        key={note.id}
+                        note={note}
+                        deleteNote={deleteNote}
+                        changeNoteColor={changeNoteColor}
+                        />
+                    ))}
                     </div>
                 </div>
             
