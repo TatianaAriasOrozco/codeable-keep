@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import NoteCard from '../NoteCard/index';
 import NoteCreate from '../NoteCreate/index';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 export function Dashboard() {
     // const [notes, setNotes] = useState([

@@ -1,0 +1,14 @@
+
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 14.9rem;
+  height: 14.125rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: aqua;
+  color: #18181b;
+}

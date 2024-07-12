@@ -1,6 +1,8 @@
 
 import PropTypes, { func } from 'prop-types';
 import styles from './styles.module.css';
+import ColorsPalette from '../ColorsPallete/ColorsPalette';
+import { useState } from 'react';
 
 // function NoteCard({ note, deleteNote, changeNoteColor }) {
 //   return (
@@ -17,6 +19,30 @@ import styles from './styles.module.css';
 // }
 
 function NoteCard() {
+ 
+ const [showColorsPalette, setShowColorsPalette] = useState(false);
+
+ 
+  function setColor(estado) {
+    
+   
+    setShowColorsPalette(!showColorsPalette);
+
+    if(estado){
+      // <ColorsPalette/>
+      return (
+        <div style={{ 
+          width:"100px",
+          height: "100px",
+          backGround: "red" 
+        }}></div>
+      )
+    }
+    
+  }
+
+ 
+
   return (
     <div className={styles.note}>
       <div className={styles.noteDetails}>
@@ -24,9 +50,9 @@ function NoteCard() {
         <textarea className={styles.noteBody} name="" id=""></textarea>
       </div>
       <div className={styles.noteFooter}>
-        <a href="">
-          <img src="src/assets/palette.svg" alt="palette color" />
-        </a>
+          
+          <img src="src/assets/palette.svg" alt="palette color" onClick={() => setColor(!showColorsPalette) } />
+        
         <a href="">
           <img src="/src/assets/delete-grey.svg" alt="trash icon" />
         </a>

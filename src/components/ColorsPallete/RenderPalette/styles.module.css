@@ -1,0 +1,39 @@
+
+
+.tooltipColor {
+  width: 1.5625rem;
+  height: 1.5625rem;
+  border-radius: 6.25rem;
+}
+
+.white {
+  background-color: white;
+  border: 1px solid #999b9e;
+}
+.red {
+  background-color: #f28b82;
+}
+.orange {
+  background-color: #fbbc04;
+}
+.yellow {
+  background-color: #fff475;
+}
+.green {
+  background-color: #ccff90;
+}
+.cian {
+  background-color: #a7ffeb;
+}
+.blue {
+  background-color: #cbf0f8;
+}
+.azure {
+  background-color: #aecbfa;
+}
+.purple {
+  background-color: #d7aefb;
+}
+.pink {
+  background-color: #fdcfe8;
+}
