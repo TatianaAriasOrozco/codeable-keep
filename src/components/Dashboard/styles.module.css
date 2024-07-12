@@ -33,8 +33,6 @@ header > a{
     color: hsla(240, 6%, 10%, 1);
     font-weight: 700;
     font-size: 1.125rem;
-    
-
 }
 
 
@@ -67,8 +65,12 @@ header > a{
     border-radius: 0 25px 25px 0;
 }
 .containerNotes{
+    display: flex;
+    flex-direction: column;
+    padding: 48px 16px;
     grid-area:notes;
     border-left: 1px #d1d1d1 solid;
     border-top: 1px #d1d1d1 solid;
+    gap: 48px;
 }
 

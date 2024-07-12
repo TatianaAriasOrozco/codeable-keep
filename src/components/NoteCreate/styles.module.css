@@ -1,46 +1,5 @@
 /* styles.css */
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-.container {
-    display: flex;
-}
-
-.sidebar {
-    width: 200px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-}
-
-.sidebar h2 span {
-    color: #ddd;
-}
-
-.sidebar nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar nav ul li {
-    margin: 10px 0;
-}
-
-.sidebar nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.main-content {
-    flex-grow: 1;
-    padding: 20px;
-}
-
 .note {
     background-color: white;
     padding: 20px;
@@ -53,17 +12,17 @@ body {
     margin-top: 0;
 }
 
-.note-footer {
+.noteFooter {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.color-picker {
+.colorPicker {
     position: relative;
 }
 
-.color-btn {
+.colorBtn {
     background: none;
     border: none;
     cursor: pointer;
@@ -81,7 +40,7 @@ body {
     border-radius: 5px;
 }
 
-.color-picker:hover .colors {
+.colorPicker:hover .colors {
     display: flex;
 }
 
@@ -125,50 +84,63 @@ body {
     background-color: purple;
 }
 
-.delete-btn {
+.deleteBtn {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 18px;
 }
 
-.note-creator {
+.noteCreator {
     background-color: white;
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding:16px;
+    margin: 0 auto;
+    border-radius: 8px;
+    width: 592px;
 }
 
-.note-title {
+.noteContainer {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    gap: 16px;
 }
 
-.note-body {
+input[type="text"] {
+    margin-top: 4px;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 16px;
+    line-height: 16px;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    color: #737373;
+    outline: none;
+    padding: 0;
 }
 
-.note-actions {
+.noteBody {
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.25px;
+    color: #737373;
+    outline: none;
+}
+
+.noteActions {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
-.save-btn {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+a p{
+    color: hsla(240, 6%, 10%, 1);
+    font-weight: 700;
+    font-size: 1.125rem;
 }
 
 .trash {
