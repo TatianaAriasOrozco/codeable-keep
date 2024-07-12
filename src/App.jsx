@@ -1,15 +1,21 @@
-import { useState } from 'react'
-import Welcome from './Welcome/index'
+
+import Welcome from './components/Welcome/index'
 import './App.css'
+import { Dashboard } from './components/Dashboard/index'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <>
-      <Welcome />
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Welcome/>} />
+        <Route path='/dashboard' element={<Dashboard/>} />
+      </Routes>
+    </Router>
   )
 }
 
