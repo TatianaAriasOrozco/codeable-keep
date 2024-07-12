@@ -1,55 +1,57 @@
 :root {
-  font-family: roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
- }
+    font-family: roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
 
 a {
-  font-weight: 500;
-  color: #151515;
-  text-decoration: inherit;
+    font-weight: 500;
+    color: #151515;
+    text-decoration: inherit;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 a:hover {
-  color: #dbdbdd;
+    color: #dbdbdd;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #FAFAFA;
-  justify-content: center;
-  color:#18181B;
+    margin: 0;
+    display: flex;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #FAFAFA;
+    justify-content: center;
+    color: #18181B;
 }
 
 h1 {
-  font-size: 36px;
-  line-height: 40px;
-  font-weight: 700;
-  margin-top: 144px;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    margin-top: 144px;
 }
 
 button {
-  background: #18181B;
-  width: 272px;
-  padding: 8px 16px;
-  margin-top: 12px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 18px;
-  border-radius: 16px;
-  border: 0px
+    background: #18181B;
+    width: 272px;
+    padding: 8px 16px;
+    margin-top: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+    border-radius: 16px;
+    border: 0px
 }
 
-
-#root{
+#root {
     width: 100%;
 }
-
