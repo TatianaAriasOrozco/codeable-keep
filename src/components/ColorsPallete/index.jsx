@@ -17,7 +17,7 @@ export function ColorsPalette() {
     pink: "#fdcfe8",
   };
 
-  // const [backgroundColor, setBackgroundColor] = useState("white");
+  // 
 
   // function setColor(color) {
   //   console.log(color);
