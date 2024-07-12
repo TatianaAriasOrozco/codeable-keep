@@ -1,31 +1,32 @@
 import styles from "./styles.module.css";
 import NoteCard from '../NoteCard/index';
 import NoteCreate from '../NoteCreate/index';
-// import { useState } from 'react';
+import { createNote, getNote } from "../../services/api";
+import { useEffect, useState } from 'react';
 
 export function Dashboard() {
-    // const [notes, setNotes] = useState([
-    //     { id: 1, title: 'Nota Ejemplo', body: 'Cuerpo de nota de ejemplo', color: 'white' },
-    //     { id: 2, title: 'Nota Ejemplo', body: 'Cuerpo de nota de ejemplo', color: 'red' },
-    //     // Puedes agregar más notas aquí
-    // ]);
+    const [notes, setNotes] = useState([]); 
+    
 
-    // const addNote = (note) => {
-    //     setNotes([...notes, { ...note, id: Date.now() }]);
-    // };
+    const username = localStorage.getItem('username');
+    
+    useEffect(() => {
+       getNote(username).then( listNote => setNotes(listNote));
+    
+    },[username]);
 
-    // const deleteNote = (id) => {
-    //     setNotes(notes.filter(note => note.id !== id));
-    // };
-
-    // const changeNoteColor = (id, color) => {
-    //     setNotes(notes.map(note => (note.id === id ? { ...note, color } : note)));
-    // };
+    function handleSubmit(){
+        createNote(username).then( note => {
+        setNotes([...notes, note])})
+    }
+    
+    
+    // console.log(createNote(username));
 
     return (
         <div className={styles.container}>
             <header>
-                <h2>Welcome to Codeable Keep <span>Tatiana</span></h2>
+                <h2>Welcome to Codeable Keep <span>{username}</span></h2>
                 <a href="/">
                     <p>Exit</p>
                 </a>
@@ -44,7 +45,9 @@ export function Dashboard() {
             <div className={styles.containerNotes}>
                 <NoteCreate />
                 <div className={styles.notes}>
-                    <NoteCard />
+                    {
+                       notes.map(note => <NoteCard key={note.id} title={note.title} body={note.body} color={note.color} />) 
+                    }
                 </div>
             </div>
 

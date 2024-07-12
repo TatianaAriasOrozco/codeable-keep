@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 import { ColorsPalette } from '../ColorsPallete/index';
 import { useState } from 'react';
 
-function NoteCard() {
+function NoteCard({title, body, color}) {
 
   const [showColorsPalette, setShowColorsPalette] = useState(false);
   const [backgroundColors, setBackgroundColors] = useState("white");
@@ -18,11 +18,11 @@ function NoteCard() {
   return (
     <div className={styles.note}
       style={{
-        backgroundColor: backgroundColors
+        backgroundColor: color
       }}>
       <div className={styles.noteDetails}>
-        <input type="text" />
-        <textarea className={styles.noteBody} name="" id=""></textarea>
+        <input type="text" value={title} />
+        <textarea className={styles.noteBody} name="" id="" value={body} ></textarea>
       </div>
       <div className={styles.noteFooter}>
         {showColorsPalette && <ColorsPalette />}

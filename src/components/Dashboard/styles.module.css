@@ -74,3 +74,9 @@ header > a{
     gap: 48px;
 }
 
+.notes{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+

@@ -1,21 +1,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.css';
+import { ColorsPalette } from '../ColorsPallete/index';
 
 function NoteCreate() {
-  // const [title, setTitle] = useState('');
-  // const [body, setBody] = useState('');
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   addNote({
-  //     title,
-  //     body,
-  //     color: 'white'
-  //   });
-  //   setTitle('');
-  //   setBody('');
-  // };
+  
+  const [showColorsPalette, setShowColorsPalette] = useState(false);
 
   return (
     <form className={styles.noteCreator}>
@@ -30,7 +20,8 @@ function NoteCreate() {
         />
       </div>
       <div className={styles.noteActions} >
-        <a href="">
+        {showColorsPalette && <ColorsPalette />}
+        <a onClick={() => setShowColorsPalette(!showColorsPalette)}>
           <img src="src/assets/palette.svg" alt="palette color" />
         </a>
         <a href="/">
