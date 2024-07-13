@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import "./styles.module.css";
+import style from "./styles.module.css";
 
 
 function Welcome({setUsername}) {
@@ -15,7 +15,7 @@ function Welcome({setUsername}) {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <h1>Welcome to Codeable Keep</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="">username</label>
@@ -25,8 +25,9 @@ function Welcome({setUsername}) {
           id=""
           placeholder="some-user"
           ref={inputRef}
+          className={style.inputUsername}
          />
-        <button type="submit">Enter </button>
+        <button className={style.btnLogin} type="submit">Enter </button>
       </form>
     </div>
   );

@@ -162,6 +162,7 @@
     color: #18181B;
     outline: none;
     background: none;
+    resize: none;
 }
 
 .noteFooter {

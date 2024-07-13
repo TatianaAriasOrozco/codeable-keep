@@ -114,7 +114,7 @@ input[type="text"] {
     border: none;
     font-size: 14px;
     font-weight: 700;
-    color: #737373;
+    color: #000000;
     outline: none;
     padding: 0;
 }
@@ -130,6 +130,18 @@ input[type="text"] {
     outline: none;
 }
 
+.noteBody:focus{
+    color: #000000;
+}
+
+.noteBody:not(:placeholder-shown){
+    color: #000000;
+}
+
+.noteBody::placeholder{
+    color: #737373;
+ }
+
 .noteActions {
     display: flex;
     justify-content: space-between;
@@ -143,9 +155,16 @@ form button{
     background: none;
     color: hsla(240, 6%, 10%, 1);
     font-weight: 700;
-    font-size: 1.125rem;
+    width: 95px;
+    font-size: 17px;
     cursor: pointer;
 }
+
+form button:hover{
+  background-color: #eeeeee6c;
+}
+
+
 
 .trash {
     padding: 20px;
