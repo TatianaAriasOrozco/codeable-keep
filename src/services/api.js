@@ -55,8 +55,7 @@ return fetch(`${url}/${username}/notes/${id}`, options)
 function deleteNote(username, id){
     const options = {method: 'DELETE', headers: {'User-Agent': 'insomnia/8.3.0'}};
 
-fetch(`${url}/${username}/notes/${id}`, options)
-  .then(response => response.json())
+return fetch(`${url}/${username}/notes/${id}`, options)
   .then(response => console.log(response))
   .catch(err => console.error(err));
 }

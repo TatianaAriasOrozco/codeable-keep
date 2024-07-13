@@ -51,7 +51,7 @@ header > a{
     gap: 24px;
     padding-left: 15px;
     font-weight: 400;
-    
+    cursor: pointer;
 }
 
 .items img{

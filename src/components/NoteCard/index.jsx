@@ -1,13 +1,18 @@
 
-import PropTypes, { func } from 'prop-types';
 import styles from './styles.module.css';
 import { ColorsPalette } from '../ColorsPallete/index';
 import { useState } from 'react';
+import { func } from 'prop-types';
 
-function NoteCard({ title, body, color, handleChangeColor, id }) {
+function NoteCard({ note, handleChangeColor, handleDelete, handlePermanentDelete, clickChange }) {
 
   const [showColorsPalette, setShowColorsPalette] = useState(false);
-  const [backgroundColors, setBackgroundColors] = useState(color);
+  const [backgroundColors, setBackgroundColors] = useState(note.color);
+  const [deletedState, setDeletedState] = useState(note.deleted);
+
+  function preventDefault(event) {
+    event.preventDefault();
+  }
 
 
   return (
@@ -16,15 +21,29 @@ function NoteCard({ title, body, color, handleChangeColor, id }) {
         backgroundColor: backgroundColors
       }}>
       <div className={styles.noteDetails}>
-        <input type="text" value={title} disabled />
-        <textarea className={styles.noteBody} name="" id="" value={body} disabled></textarea>
+        <input type="text" value={note.title} disabled />
+        <textarea className={styles.noteBody} name="" id="" value={note.body} disabled></textarea>
       </div>
       <div className={styles.noteFooter}>
-        {showColorsPalette && <ColorsPalette setBackgroundColor={setBackgroundColors} setShowColorsPalette={setShowColorsPalette} showColorsPalette={showColorsPalette} handleChangeColor={handleChangeColor} id={id} />}
-        <a onClick={() => setShowColorsPalette(!showColorsPalette)}>
-          <img src="src/assets/palette.svg" alt="palette color" />
-        </a>
-        <a href="">
+        {showColorsPalette && <ColorsPalette setBackgroundColor={setBackgroundColors} setShowColorsPalette={setShowColorsPalette} showColorsPalette={showColorsPalette} handleChangeColor={handleChangeColor} id={note.id} />}
+
+        {
+          clickChange === "Notes"
+            ?
+            <a onClick={() => setShowColorsPalette(!showColorsPalette)}>
+              <img src="src/assets/palette.svg" alt="palette color" /> </a> :
+            <a onClick={(event) => handleDelete(event, deletedState, setDeletedState, note)}>
+              <img src="src/assets/restore.svg" alt="restore icon" /> </a>
+        }
+
+        <a href="" onClick={(event) => {
+          preventDefault(event);
+          if (note.deleted) {
+            handlePermanentDelete(event, note);
+          } else {
+            handleDelete(event, deletedState, setDeletedState, note);
+          }
+        }}>
           <img src="/src/assets/delete-grey.svg" alt="trash icon" />
         </a>
       </div>
