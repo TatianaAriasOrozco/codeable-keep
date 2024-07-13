@@ -40,15 +40,15 @@ function getNote(username) {
 }
 
 function editNote(username, id, body){
-    const options = {
+  const options = {
   method: 'PATCH',
   headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/8.3.0'},
   body: JSON.stringify(body)
 };
 
-fetch(`${url}/${username}/notes/${id}`, options)
+return fetch(`${url}/${username}/notes/${id}`, options)
   .then(response => response.json())
-  .then(response => console.log(response))
+  .then(response => response)
   .catch(err => console.error(err));
 }
 

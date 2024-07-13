@@ -5,9 +5,9 @@ import { ColorsPalette } from '../ColorsPallete/index';
 
 
 function NoteCreate({ notes }) {
-  // const [notes, setNotes] = useState(notes);
-  console.log(notes);
+
   const [showColorsPalette, setShowColorsPalette] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState("#FFF");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -15,9 +15,17 @@ function NoteCreate({ notes }) {
     setTitle(e.target.value);
   };
 
+  const handleBodyChange = (e) => {
+    setBody(e.target.value);
+  };
+
   return (
     <form className={styles.noteCreator}
-      onSubmit={notes}>
+      onSubmit={(event) => {
+        event.preventDefault();
+        const newNote = { title: title, body: body, color: backgroundColor };
+        notes(newNote)
+      }}>
       <div className={styles.noteContainer}>
         <input
           type="text"
@@ -28,12 +36,11 @@ function NoteCreate({ notes }) {
         <textarea
           placeholder="Your note..."
           className={styles.noteBody}
-
-        // onChange={(event) => { setBody(event.target.value) }}
+          onChange={handleBodyChange}
         />
       </div>
       <div className={styles.noteActions} >
-        {showColorsPalette && <ColorsPalette />}
+        {showColorsPalette && <ColorsPalette setBackgroundColor={setBackgroundColor} setShowColorsPalette={setShowColorsPalette} showColorsPalette={showColorsPalette} />}
         <a onClick={() => setShowColorsPalette(!showColorsPalette)}>
           <img src="src/assets/palette.svg" alt="palette color" />
         </a>

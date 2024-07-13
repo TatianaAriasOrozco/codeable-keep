@@ -4,28 +4,23 @@ import styles from './styles.module.css';
 import { ColorsPalette } from '../ColorsPallete/index';
 import { useState } from 'react';
 
-function NoteCard({ title, body, color }) {
+function NoteCard({ title, body, color, handleChangeColor, id }) {
 
   const [showColorsPalette, setShowColorsPalette] = useState(false);
-  const [backgroundColors, setBackgroundColors] = useState("white");
+  const [backgroundColors, setBackgroundColors] = useState(color);
 
-  function setColor(color) {
-    console.log(color);
-    // editNote(id, { color: color });
-    setBackgroundColors(backgroundColors[color]);
-  }
 
   return (
     <div className={styles.note}
       style={{
-        backgroundColor: color
+        backgroundColor: backgroundColors
       }}>
       <div className={styles.noteDetails}>
         <input type="text" value={title} disabled />
         <textarea className={styles.noteBody} name="" id="" value={body} disabled></textarea>
       </div>
       <div className={styles.noteFooter}>
-        {showColorsPalette && <ColorsPalette />}
+        {showColorsPalette && <ColorsPalette setBackgroundColor={setBackgroundColors} setShowColorsPalette={setShowColorsPalette} showColorsPalette={showColorsPalette} handleChangeColor={handleChangeColor} id={id} />}
         <a onClick={() => setShowColorsPalette(!showColorsPalette)}>
           <img src="src/assets/palette.svg" alt="palette color" />
         </a>
@@ -36,11 +31,5 @@ function NoteCard({ title, body, color }) {
     </div>
   )
 }
-
-// NoteCard.propTypes = {
-//   note: PropTypes.object.isRequired,
-//   deleteNote: PropTypes.func.isRequired,
-//   changeNoteColor: PropTypes.func.isRequired,
-// };
 
 export default NoteCard;

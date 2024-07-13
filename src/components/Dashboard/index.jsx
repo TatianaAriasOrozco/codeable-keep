@@ -1,13 +1,12 @@
 import styles from "./styles.module.css";
 import NoteCard from '../NoteCard/index';
 import NoteCreate from '../NoteCreate/index';
-import { createNote, getNote } from "../../services/api";
+import { createNote, getNote, editNote } from "../../services/api";
 import { useEffect, useState } from 'react';
 
 export function Dashboard() {
+
     const [notes, setNotes] = useState([]);
-
-
     const username = localStorage.getItem('username');
 
     useEffect(() => {
@@ -15,9 +14,18 @@ export function Dashboard() {
 
     }, [username]);
 
-    function handleSubmit() {
-        createNote(username).then(note => {
+
+    function handleSubmit(newNote) {
+        createNote(username, newNote).then(note => {
             setNotes([...notes, note])
+        })
+    }
+
+    function handleChangeColor(id, body) {
+        editNote(username, id, body).then(response => {
+            console.log(response.note);
+        }).catch(error => {
+            console.log(error);
         })
     }
 
@@ -44,7 +52,7 @@ export function Dashboard() {
                 <NoteCreate notes={handleSubmit} />
                 <div className={styles.notes}>
                     {
-                        notes.map(note => <NoteCard key={note.id} title={note.title} body={note.body} color={note.color} />)
+                        notes.map(note => <NoteCard key={note.id} title={note.title} body={note.body} color={note.color} handleChangeColor={handleChangeColor} id={note.id} />)
                     }
                 </div>
             </div>

@@ -2,7 +2,7 @@ import styles from "../ColorsPallete/colorspalette.module.css";
 // import { useState } from 'react'
 import { RenderPalette } from "./RenderPalette/index";
 
-export function ColorsPalette() {
+export function ColorsPalette({ setBackgroundColor, setShowColorsPalette, showColorsPalette, handleChangeColor, id }) {
 
   const backgroundColors = {
     white: "white",
@@ -17,14 +17,12 @@ export function ColorsPalette() {
     pink: "#fdcfe8",
   };
 
-  // 
-
-  // function setColor(color) {
-  //   console.log(color);
-  //   // editNote(id, { color: color });
-  //   setShowColorsPalette(!showColorsPalette);
-  //   setBackgroundColor(backgroundColors[color]);
-  // }
+  function setColor(color) {
+    console.log(color);
+    setShowColorsPalette(!showColorsPalette);
+    setBackgroundColor(backgroundColors[color]);
+    handleChangeColor(id, { color: backgroundColors[color] });
+  }
 
   return (
     <div className={styles.colors}>
@@ -32,6 +30,7 @@ export function ColorsPalette() {
         <RenderPalette
           key={Math.random()}
           color={color}
+          onColor={setColor}
         />
       ))}
     </div>
