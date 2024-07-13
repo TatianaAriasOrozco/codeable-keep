@@ -5,23 +5,21 @@ import { createNote, getNote } from "../../services/api";
 import { useEffect, useState } from 'react';
 
 export function Dashboard() {
-    const [notes, setNotes] = useState([]); 
-    
+    const [notes, setNotes] = useState([]);
+
 
     const username = localStorage.getItem('username');
-    
-    useEffect(() => {
-       getNote(username).then( listNote => setNotes(listNote));
-    
-    },[username]);
 
-    function handleSubmit(){
-        createNote(username).then( note => {
-        setNotes([...notes, note])})
+    useEffect(() => {
+        getNote(username).then(listNote => setNotes(listNote));
+
+    }, [username]);
+
+    function handleSubmit() {
+        createNote(username).then(note => {
+            setNotes([...notes, note])
+        })
     }
-    
-    
-    // console.log(createNote(username));
 
     return (
         <div className={styles.container}>
@@ -43,10 +41,10 @@ export function Dashboard() {
                 </a>
             </div>
             <div className={styles.containerNotes}>
-                <NoteCreate />
+                <NoteCreate notes={handleSubmit} />
                 <div className={styles.notes}>
                     {
-                       notes.map(note => <NoteCard key={note.id} title={note.title} body={note.body} color={note.color} />) 
+                        notes.map(note => <NoteCard key={note.id} title={note.title} body={note.body} color={note.color} />)
                     }
                 </div>
             </div>

@@ -139,10 +139,12 @@ input[type="text"] {
     
 }
 
-a p{
+form button{
+    background: none;
     color: hsla(240, 6%, 10%, 1);
     font-weight: 700;
     font-size: 1.125rem;
+    cursor: pointer;
 }
 
 .trash {
