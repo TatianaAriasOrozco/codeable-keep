@@ -21,7 +21,10 @@ export function ColorsPalette({ setBackgroundColor, setShowColorsPalette, showCo
     console.log(color);
     setShowColorsPalette(!showColorsPalette);
     setBackgroundColor(backgroundColors[color]);
-    handleChangeColor(id, { color: backgroundColors[color] });
+    if(handleChangeColor){
+      handleChangeColor(id, { color: backgroundColors[color] });
+    }
+    
   }
 
   return (
