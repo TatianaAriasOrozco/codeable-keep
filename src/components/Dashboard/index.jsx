@@ -13,7 +13,22 @@ export function Dashboard({ username, setUsername }) {
         getNote(username).then(listNote => setNotes(listNote));
     }, [username]);
 
-    function handleDelete(event, deletedState, setDeletedState, note) {
+
+    function handleChangeColor(note, editedColor) {
+        const editedNote = { ...note };
+        editedNote.color = editedColor;
+        const copyNotes = [...notes];
+        const index = copyNotes.findIndex((note) => note.id === editedNote.id);
+        copyNotes.splice(index, 1, editedNote);
+        setNotes(copyNotes);
+        editNote(username, note.id, { color: editedColor }).then(response => {
+            console.log(response.note);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
+    function handleStatusNote(event, deletedState, setDeletedState, note) {
         event.preventDefault();
         setDeletedState(!deletedState);
         const editedNote = { ...note };
@@ -34,7 +49,6 @@ export function Dashboard({ username, setUsername }) {
         const eliminatedNote = { ...note };
         const copyNotes = [...notes];
         const realNotes = copyNotes.filter((note) => note.id !== eliminatedNote.id);
-        console.log(realNotes);
         setNotes(realNotes);
         deleteNote(username, note.id).then(eliminatedNote);
     }
@@ -45,7 +59,6 @@ export function Dashboard({ username, setUsername }) {
                 <h2>Welcome to Codeable Keep <span>{username}</span></h2>
                 <a onClick={() => {
                     setUsername("");
-                    localStorage.clear();
                 }}>
                     <p>Exit</p>
                 </a>
@@ -65,9 +78,9 @@ export function Dashboard({ username, setUsername }) {
             <div className={styles.containerNotes}>
                 {
                     clickChange === "Notes" ?
-                        <Notes username={username} handleDelete={handleDelete} notes={notes.filter((note) => !note.deleted)}
-                            setNotes={setNotes} clickChange={clickChange} />
-                        : <Trash handleDelete={handleDelete} notes={notes.filter((note) => note.deleted)} setNotes={setNotes} handlePermanentDelete={handlePermanentDelete} clickChange={clickChange} />
+                        <Notes username={username} handleStatusNote={handleStatusNote} notes={notes.filter((note) => !note.deleted)}
+                            setNotes={setNotes} clickChange={clickChange} handleChangeColor={handleChangeColor} />
+                        : <Trash handleStatusNote={handleStatusNote} notes={notes.filter((note) => note.deleted)} setNotes={setNotes} handlePermanentDelete={handlePermanentDelete} clickChange={clickChange} />
                 }
             </div>
         </div>

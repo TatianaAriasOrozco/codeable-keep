@@ -2,7 +2,7 @@ import styles from "../ColorsPallete/colorspalette.module.css";
 // import { useState } from 'react'
 import { RenderPalette } from "./RenderPalette/index";
 
-export function ColorsPalette({ setBackgroundColor, setShowColorsPalette, showColorsPalette, handleChangeColor, id }) {
+export function ColorsPalette({ setBackgroundColor, setShowColorsPalette, showColorsPalette, handleChangeColor, note }) {
 
   const backgroundColors = {
     white: "white",
@@ -21,10 +21,10 @@ export function ColorsPalette({ setBackgroundColor, setShowColorsPalette, showCo
     console.log(color);
     setShowColorsPalette(!showColorsPalette);
     setBackgroundColor(backgroundColors[color]);
-    if(handleChangeColor){
-      handleChangeColor(id, { color: backgroundColors[color] });
+    if (handleChangeColor) {
+      handleChangeColor(note, backgroundColors[color]);
     }
-    
+
   }
 
   return (

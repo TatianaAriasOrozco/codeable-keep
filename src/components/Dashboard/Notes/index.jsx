@@ -4,19 +4,11 @@ import styles from "../styles.module.css/";
 import { createNote, getNote, editNote } from "../../../services/api";
 import { useEffect, useState } from 'react';
 
-export function Notes({ username, notes, setNotes, handleDelete, clickChange }) {
+export function Notes({ username, notes, setNotes, handleStatusNote, clickChange, handleChangeColor }) {
 
   function handleSubmit(newNote) {
     createNote(username, newNote).then(note => {
       setNotes([note, ...notes])
-    })
-  }
-
-  function handleChangeColor(id, body) {
-    editNote(username, id, body).then(response => {
-      console.log(response.note);
-    }).catch(error => {
-      console.log(error);
     })
   }
 
@@ -29,7 +21,7 @@ export function Notes({ username, notes, setNotes, handleDelete, clickChange }) 
             key={note.id}
             note={note}
             handleChangeColor={handleChangeColor}
-            handleDelete={handleDelete}
+            handleStatusNote={handleStatusNote}
             clickChange={clickChange}
           />
         ))}

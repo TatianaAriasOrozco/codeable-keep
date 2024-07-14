@@ -1,7 +1,7 @@
 import styles from "../styles.module.css/";
 import NoteCard from "../../NoteCard";
 
-export function Trash({ notes, setNotes, handleDelete, handlePermanentDelete, clickChange }) {
+export function Trash({ notes, setNotes, handleStatusNote, handlePermanentDelete, clickChange }) {
     return (
         <>
             <div className={styles.notes}>
@@ -9,7 +9,7 @@ export function Trash({ notes, setNotes, handleDelete, handlePermanentDelete, cl
                     <NoteCard
                         key={note.id}
                         note={note}
-                        handleDelete={handleDelete}
+                        handleStatusNote={handleStatusNote}
                         handlePermanentDelete={handlePermanentDelete}
                         clickChange={clickChange}
                     />

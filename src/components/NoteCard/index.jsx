@@ -4,7 +4,7 @@ import { ColorsPalette } from '../ColorsPallete/index';
 import { useState } from 'react';
 import { func } from 'prop-types';
 
-function NoteCard({ note, handleChangeColor, handleDelete, handlePermanentDelete, clickChange }) {
+function NoteCard({ note, handleChangeColor, handleStatusNote, handlePermanentDelete, clickChange, handleStatusColor }) {
 
   const [showColorsPalette, setShowColorsPalette] = useState(false);
   const [backgroundColors, setBackgroundColors] = useState(note.color);
@@ -25,14 +25,14 @@ function NoteCard({ note, handleChangeColor, handleDelete, handlePermanentDelete
         <textarea className={styles.noteBody} name="" id="" value={note.body} disabled></textarea>
       </div>
       <div className={styles.noteFooter}>
-        {showColorsPalette && <ColorsPalette setBackgroundColor={setBackgroundColors} setShowColorsPalette={setShowColorsPalette} showColorsPalette={showColorsPalette} handleChangeColor={handleChangeColor} id={note.id} />}
+        {showColorsPalette && <ColorsPalette setBackgroundColor={setBackgroundColors} setShowColorsPalette={setShowColorsPalette} showColorsPalette={showColorsPalette} handleChangeColor={handleChangeColor} note={note} handleStatusColor={handleStatusColor} />}
 
         {
           clickChange === "Notes"
             ?
             <a onClick={() => setShowColorsPalette(!showColorsPalette)}>
               <img src="src/assets/palette.svg" alt="palette color" /> </a> :
-            <a onClick={(event) => handleDelete(event, deletedState, setDeletedState, note)}>
+            <a onClick={(event) => handleStatusNote(event, deletedState, setDeletedState, note)}>
               <img src="src/assets/restore.svg" alt="restore icon" /> </a>
         }
 
@@ -41,7 +41,7 @@ function NoteCard({ note, handleChangeColor, handleDelete, handlePermanentDelete
           if (note.deleted) {
             handlePermanentDelete(event, note);
           } else {
-            handleDelete(event, deletedState, setDeletedState, note);
+            handleStatusNote(event, deletedState, setDeletedState, note);
           }
         }}>
           <img src="/src/assets/delete-grey.svg" alt="trash icon" />

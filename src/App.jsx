@@ -7,13 +7,11 @@ import { useState, useEffect } from 'react'
 function App() {
 
   const [username, setUsername] = useState("");
-  const usernamelocal = localStorage.getItem("username");
-  console.log(usernamelocal);
+  const usernamelocal = sessionStorage.getItem("username");
 
   useEffect(() => {
     if (usernamelocal !== null) {
       setUsername(usernamelocal);
-      console.log("entra al if");
       return
     }
   }, [])
