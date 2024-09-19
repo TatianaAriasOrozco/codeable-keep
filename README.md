@@ -1,8 +1,18 @@
-# React + Vite
+# Google Keep-Inspired SPA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a Single Page Application (SPA) inspired by Google Keep, aimed at improving productivity through efficient note management. Users can create, view, delete, and organize their personal notes, with added features like color customization and note recovery.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Login**: Users can log in with a username and access only their notes.
+- **Persistent Session**: Users remain logged in even after refreshing the page.
+- **Create Notes**: Users can add notes with a title, content, and choose a custom color.
+- **View Notes**: All notes are displayed in a list, ordered by the most recent first.
+- **Edit Notes**: Users can update the color of any note.
+- **Delete Notes**: Notes can be moved to the trash and later restored or permanently deleted.
+- **Trash View**: Separate view for deleted notes with options to restore or permanently remove them.
+- **Logout**: Users can log out, clearing their session from the browser.
+
+
+
+   
